@@ -1,0 +1,7 @@
+.stats-tooltip {
+    max-width: 250px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+}

@@ -1,7 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
-import Units from './Units';
+import UnitPurchase from './UnitPurchase';
 import { useEffect, useState } from 'react';
+import UnitList from './UnitList';
 
 function App() {
 
@@ -10,6 +11,14 @@ function App() {
   const [factionIsChosen, setFactionIsChosen] = useState(false)
 
   const [faction, setFaction] = useState("Not selected")
+
+  const [lightUnits, setLightUnits] = useState([])
+
+  const [medUnits, setMedUnits] = useState([])
+
+  const [heavyUnits, setHeavyUnits] = useState([])
+
+  const [ruinerUnits, setRuinerUnits] = useState([])
 
   useEffect(() => {
     console.log(factionIsChosen)
@@ -57,7 +66,27 @@ function App() {
           <button name='The Necropolis' onClick={(e) => factionSelect(e)}>Necropolis</button>
         </div>
         :
-        <Units points={points} setPoints={setPoints} faction={faction}></Units>
+        <div className='game-area'>
+          <UnitPurchase 
+            points={points} 
+            setPoints={setPoints} 
+            faction={faction} 
+            lightUnits={lightUnits} 
+            medUnits={medUnits} 
+            heavyUnits={heavyUnits}
+            ruinerUnits={ruinerUnits}
+            setLightUnits={setLightUnits} 
+            setMedUnits={setMedUnits} 
+            setHeavyUnits={setHeavyUnits}
+            setRuinerUnits={setRuinerUnits} 
+          />
+          <UnitList
+            lightUnits={lightUnits} 
+            medUnits={medUnits} 
+            heavyUnits={heavyUnits}
+            ruinerUnits={ruinerUnits}
+          />
+        </div>
         }
       </div>
     </div>
